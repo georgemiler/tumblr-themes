@@ -1,0 +1,213 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<!-- 	
+		<meta name="text:Website Address" content="" />
+		<meta name="text:Flickr Username" content="" />
+		<meta name="text:Twitter Username" content="" />
+		<meta name="text:Facebook Username" content="" />
+		<meta name="text:YouTube Username" content="" />
+		<meta name="text:Lastfm Username" content="" /> -->
+		
+		<!-- Google Analytics -->
+		<meta name="text:Google Analytics ID" content="" />
+		<title>{Title}{block:PostTitle} &mdash; {PostTitle}{/block:PostTitle}</title>
+
+		<link rel="shortcut icon" href="{Favicon}"><link>
+		<link rel="alternate" type="application/rss+xml" href="{RSS}"></link>
+		<link rel="stylesheet" type="text/css" href="themes/bookblock.css"></link>
+		<link href='http://fonts.googleapis.com/css?family=Signika+Negative' rel='stylesheet' type='text/css'>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+		<div class="cover">
+			<h1><i class="fa-tint"></i></h1>
+			<h1><a href="/">{Title}</a></h1>
+			<div class="description">{Description}</div>
+		</div>
+		<div class="content">
+			<!-- Loops for each post-type -->
+			{block:Posts}
+			  <div class="post {TagsAsClasses}">
+
+				{block:Text}
+					<div class="text">
+						<h3><a href="{Permalink}">{Title}</a></h3>
+						<p>{Body}</p>
+					</div>
+				{/block:Text}
+
+				{block:Quote}
+					<div class="quote">
+						<h3><a href="{Permalink}">{Quote}</a></h3>
+						{block:Source}
+							<p class="source">&mdash; <a href="{URL}">{Source}</a></p>
+						{/block:Source}
+					</div>
+				{/block:Quote}
+
+				{block:Link}
+					<div class="link">        
+						<h3><a href="{URL}" {Target}>{Name}</a></h3>
+						{block:Description}<p>{Description}</p>{/block:Description}
+					</div>
+				{/block:Link}
+		  
+				{block:Video}
+					<div class="video">
+						<a href="{Permalink}">
+						{Video-400}
+						{block:Caption}<p>{Caption}</p>{/block:Caption}
+						</a>
+					</div> 
+				{/block:Video}
+		  
+				{block:Audio}
+					<div class="audio">
+						<a href="{Permalink}">
+						{AudioPlayerBlack}
+						{block:Caption}<p>{Caption}</p>{/block:Caption}
+						</a>
+					</div>
+				{/block:Audio}
+		  
+				{block:Photo}
+					<div class="photo">
+						{LinkOpenTag}
+							<a href="{Permalink}">
+								<img src="{PhotoURL-400}" alt="{PhotoAlt}"/>
+							</a>
+						{LinkCloseTag}
+						{block:Caption}
+							<p>{Caption}</p>
+						{/block:Caption}
+					</div>
+				{/block:Photo}
+		  
+				{block:Chat}
+					<div class="chat">
+						<a href="{Permalink}">
+							<ul class="conversation unstyled">
+								{block:Lines}
+								<li class="line {Alt}">
+									{block:Label}
+									<span class="person"> {Label}</span>
+									{/block:Label}
+									<span class="person-said">: {Line}</span>
+								</li>
+								{/block:Lines}
+							</ul>
+						</a>
+					</div> 
+				{/block:Chat}
+				
+				<!-- Only rendered if the post was reblogged from someone else -->
+				{block:RebloggedFrom}
+				<p>This post was reblogged from <a href="{ReblogParentURL}" title="{ReblogParentTitle}">{ReblogParentTitle}</a>.</p>
+				{/block:RebloggedFrom}
+				
+				<!-- post meta -->
+				{block:IndexPage}
+					<ul class="meta unstyled">
+						{block:Date}
+							<li><a href="{Permalink}">{DayOfMonth} {ShortMonth} {Year}</a></li>
+							{/block:Date}
+						{block:IfDisqusShortname}
+							<li><a href="{Permalink}#disqus_thread">{lang:Comment}</a></li>{/block:IfDisqusShortname}
+						{block:NoteCount}
+							<li><a href="{Permalink}">{NoteCount} Notes</a></li>
+							{/block:NoteCount}
+							<li><a href="{Permalink}">&#8734; Permalink</a></li>
+					</ul>
+					<br>
+					<ul class="unstyled tags">
+						{block:HasTags}
+							<li class="tag">
+								{block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
+							</li>
+						{/block:HasTags}
+					</ul>
+
+				{/block:IndexPage}
+
+				{block:PermalinkPage}
+					<ul class="meta">
+						{block:Date}
+							<li><a href="{Permalink}"> {DayOfMonth} {Month} {Year}</a></li>
+						{/block:Date}
+						{block:HasTags}
+							<li>{block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}</li>
+						{/block:HasTags}
+						{block:NoteCount}
+							<li><a href="{Permalink}">{NoteCount}</a></li>
+						{/block:NoteCount}
+					</ul>
+					{block:PostNotes}
+						{PostNotes}
+					{/block:PostNotes}
+
+					{block:IfDisqusShortname}
+						<div id="disqus_thread"></div>
+						<script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+						<noscript>
+							<a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a>
+						</noscript>
+					{/block:IfDisqusShortname}
+				{/block:PermalinkPage}
+				<!-- / post meta -->
+
+			  </div> <!-- end single post -->
+			{/block:Posts}
+			  
+			{block:PermalinkPagination}
+				<!-- Pagination only rendered on permalink pages -->
+				<ul class="meta unstyled">
+					{block:PreviousPost}
+						<li class="pull-left"><a href="{PreviousPost}" class="pull-left">&#8592; Previous Post</a></li>
+					{/block:PreviousPost}
+					{block:NextPost}
+						<li class="pull-right"><a href="{NextPost}" >Next Post &#8594;</a></li>
+					{/block:NextPost}
+				</ul> <!-- end previous/next (posts) -->
+			{/block:PermalinkPagination}
+
+			{block:Pagination}
+				<!-- Pagination only rendered on index pages -->
+				<ul class="meta unstyled">
+					<li class="currentPage">Page {CurrentPage} of {TotalPages}</li>
+					{block:NextPage}
+						<li class="pull-left"><a href="{NextPage}">&#8592; Older Entries</a></li>
+					{/block:NextPage}
+					{block:PreviousPage}
+						<li class="pull-left"><a href="{PreviousPage}">Newer Entries &#8594;</a></li>
+					{/block:PreviousPage}
+				</ul> <!-- end previous/next (pages) -->
+			{/block:Pagination}
+
+			{block:Following}
+			<div class="followed">
+				<p>I'm following these blogs</p>
+				<ul class="unstyled">
+					{block:Followed}
+						<li>
+							<a href="{FollowedURL}">
+								<img src="{FollowedPortraitURL-30}" alt="{FollowedName}" title="{FollowedTitle}"/></a>
+						</li>
+					{/block:Followed}
+				</ul>
+			</div>
+			{/block:Following}
+
+			<!-- Please do not remove the line below -->
+			<p class="copyright">Powered by <a href="http://tumblr.com/">Tumblr</a>. Theme created by <a href="http://www.behance.net/AmieChen">Amie Chen</a>.<a href="{RSS}">RSS</a> <a href="/archive">archive</a></p>
+		</div> <!-- end content -->
+	</body>
+</html>

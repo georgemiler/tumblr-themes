@@ -1,0 +1,300 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<!-- 	
+		<meta name="text:Website Address" content="" />
+		<meta name="text:Flickr Username" content="" />
+		<meta name="text:Twitter Username" content="" />
+		<meta name="text:Facebook Username" content="" />
+		<meta name="text:YouTube Username" content="" />
+		<meta name="text:Lastfm Username" content="" /> -->
+		
+		<!-- Google Analytics -->
+		<meta name="text:Google Analytics ID" content="" />
+		<title>{Title}{block:PostTitle} &mdash; {PostTitle}{/block:PostTitle}</title>
+
+		<link rel="shortcut icon" href="{Favicon}"><link>
+		<link rel="alternate" type="application/rss+xml" href="{RSS}"></link>
+		<link rel="stylesheet" type="text/css" href="themes/travel.css"></link>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+		<nav class="clearfix">  
+		    <ul class="clearfix">
+			    <li><a href="/">{lang:Home}</a></li>
+				<li><a href="/archive/">{lang:Archive}</a></li>
+				<li><a href="{RSS}">{lang:RSS}</a></li>
+				<li><a href="/mobile">{lang:Mobile}</a></li>
+
+<!-- 			{block:IfWebsiteAddress}
+				<li><a href="{text:Website Address}">Website</a></li>
+			{/block:IfWebsiteAddress}
+			{block:IfTwitterUsername}
+				<li><a href="http://www.twitter.com/{text:Twitter Username}" class="twitter">Twitter</a></li>
+			{/block:IfTwitterUsername}
+			{block:IfFlickrUsername}
+				<li><a href="http://www.flickr.com/photos/{text:Flickr Username}" class="flickr">Flickr</a></li>
+			{/block:IfFlickrUsername}
+			{block:IfFacebookUsername}
+			<li><a href="http://www.facebook.com/{text:Facebook Username}" class="facebook">Facebook</a></li>
+			{/block:IfFacebookUsername}
+			{block:IfYouTubeUsername}
+				<li><a href="http://www.youtube.com/user/{text:YouTube Username}" class="twitter">YouTube</a></li>
+			{/block:IfYouTubeUsername}
+			{block:IfLastfmUsername}
+				<li><a href="http://www.last.fm/user/{text:Lastfm Username}" class="lastfm">Last.fm</a></li>
+			{/block:IfLastfmUsername} -->
+		    </ul>  
+		    <a href="#" id="pull">Menu</a>  
+		</nav> 
+		<div class="welcome">
+			<div id="grid"></div>
+			<div class="cover">
+				<h1><a href="/">{Title}</a></h1>
+				<div class="description">{Description}</div>
+			</div>
+			<div class="cloud cloud-main"></div>
+			<div class="cloud cloud-back"></div>
+		</div>
+	<div class="container">    
+		<div class="content main">
+			<!-- Loops for each post-type -->
+			{block:Posts}
+			  <div class="post {TagsAsClasses}">
+
+				{block:Text}
+					<div class="text">
+						<h3><a href="{Permalink}">{Title}</a></h3>
+						<p>{Body}</p>
+					</div>
+				{/block:Text}
+
+				{block:Quote}
+					<div class="quote">
+						<h3><a href="{Permalink}"><blockquote class="words">&#8220;{Quote}&#8221;</blockquote></a></h3>
+						{block:Source}
+							<p class="source">&mdash; {Source}</p>
+						{/block:Source}
+					</div>
+				{/block:Quote}
+
+				{block:Link}
+					<div class="link">        
+						<h3><a href="{URL}" {Target}>{Name}</a></h3>
+						{block:Description}<p>{Description}</p>{/block:Description}
+					</div>
+				{/block:Link}
+		  
+				{block:Video}
+					<div class="video">
+						{Video-400}
+						{block:Caption}<p>{Caption}</p>{/block:Caption}
+					</div> 
+				{/block:Video}
+		  
+				{block:Audio}
+					<div class="audio">
+						{AudioPlayerBlack}
+						{block:Caption}<p>{Caption}</p>{/block:Caption}
+					</div>
+				{/block:Audio}
+		  
+				{block:Photo}
+					<div class="photo">
+						{LinkOpenTag}
+							<a href="{Permalink}">
+								<img style="width: 100%;" src="{PhotoURL-400}" alt="{PhotoAlt}"/>
+							</a>
+						{LinkCloseTag}
+						{block:Caption}
+							<p>{Caption}</p>
+						{/block:Caption}
+					</div>
+				{/block:Photo}
+		  
+				{block:Chat}
+					<div class="chat">
+						<a href="{Permalink}">
+							<ul class="conversation">
+								{block:Lines}
+								<li class="line {Alt}">
+									{block:Label}<span class="person">{Label}</span>{/block:Label}
+									<span class="person-said">{Line}</span>
+								</li>
+								{/block:Lines}
+							</ul>
+						</a>
+					</div> 
+				{/block:Chat}
+				
+				<!-- Only rendered if the post was reblogged from someone else -->
+				{block:RebloggedFrom}
+				<p>This post was reblogged from <a href="{ReblogParentURL}" title="{ReblogParentTitle}">{ReblogParentTitle}</a>.</p>
+				{/block:RebloggedFrom}
+				
+				<!-- post meta -->
+				{block:IndexPage}
+					<ul class="meta">
+						{block:Date}
+							<li><a href="{Permalink}">{DayOfMonth} {ShortMonth} {Year}</a></li>
+							{/block:Date}
+						{block:IfDisqusShortname}
+							<li><a href="{Permalink}#disqus_thread">{lang:Comment}</a></li>{/block:IfDisqusShortname}
+						{block:NoteCount}
+							<li><a href="{Permalink}">{NoteCount} Notes</a></li>
+							{/block:NoteCount}
+							<li><a href="{Permalink}">&#8734; Permalink</a></li>
+					</ul>
+					{block:IfShowTags}
+					<ul class="meta tags">
+						{block:HasTags}
+							<li class="tag">
+								{block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
+							</li>
+						{/block:HasTags}
+					</ul>
+					{/block:IfShowTags}
+				{/block:IndexPage}
+
+				{block:PermalinkPage}
+					<ul class="meta">
+						{block:Date}
+							<li><a href="{Permalink}"> {DayOfMonth} {Month} {Year}</a></li>{/block:Date}
+						{block:IfShowTags}{block:HasTags}
+							<li>{block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}</li>{/block:HasTags}{/block:IfShowTags}
+						{block:NoteCount}
+							<li><a href="{Permalink}">{NoteCount}</a></li>
+							{/block:NoteCount}
+					</ul>
+					{block:PostNotes}
+						{PostNotes}
+					{/block:PostNotes}
+
+					{block:IfDisqusShortname}
+						<div id="disqus_thread"></div>
+						<script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+						<noscript>
+							<a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a>
+						</noscript>
+					{/block:IfDisqusShortname}
+				{/block:PermalinkPage}
+				<!-- / post meta -->
+
+			  </div> <!-- end single post -->
+			{/block:Posts}
+			  
+			{block:PermalinkPagination}
+				<!-- Pagination only rendered on permalink pages -->
+				<p class="">
+					{block:PreviousPost}
+						<a href="{PreviousPost}" class="pull-left">&#8592; Previous Post</a>	{/block:PreviousPost}
+					{block:NextPost}
+						<a href="{NextPost}" class="pull-right">Next Post &#8594;</a>
+						{/block:NextPost}
+				</p> <!-- end previous/next (posts) -->
+			{/block:PermalinkPagination}
+
+			{block:Pagination}
+				<!-- Pagination only rendered on index pages -->
+				<p class="">
+					<p class="currentPage">Page {CurrentPage} of {TotalPages}</p>
+					{block:NextPage}
+						<a href="{NextPage}" class="pull-left">&#8592; Older Entries</a>
+						{/block:NextPage}
+					
+					{block:PreviousPage}
+						<a href="{PreviousPage}" class="pull-left">Newer Entries &#8594;</a>
+						{/block:PreviousPage}
+				</p> <!-- end previous/next (pages) -->
+			{/block:Pagination}
+
+			{block:Following}
+			<div class="followed">
+				<p>I'm following these blogs</p>
+				<ul class="unstyled">
+					{block:Followed}
+						<li>
+							<a href="{FollowedURL}">
+								<img src="{FollowedPortraitURL-30}" alt="{FollowedName}" title="{FollowedTitle}"/></a>
+						</li>
+					{/block:Followed}
+				</ul>
+			</div>
+			{/block:Following}
+
+			<!-- Please do not remove the line below -->
+			<p class="copyright">Powered by <a href="http://tumblr.com/">Tumblr</a>. Theme created by <a href="http://www.behance.net/AmieChen">Amie Chen</a>.<a href="{RSS}">RSS</a> <a href="/archive">archive</a></p>
+		</div> <!-- end content -->
+	  </div> <!-- end container -->
+		<script type="text/javascript">
+		    var pull = $('#pull');  
+				menu = $('nav ul');  
+				menuHeight = menu.height();  
+			function viewport() {
+				var body = document.body,
+					html = document.documentElement,
+					height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight, window.innerHeight);
+
+				return [window.innerWidth, height];
+			}
+
+			function drawGrid() {
+				var dimensions = viewport(),
+					columns = dimensions[0] / 80,
+					rows = dimensions[1] / 80,
+					grid = document.getElementById('grid'),
+					table = document.createElement('table'),
+					row,
+					cell,
+					i = 0,
+					j = 0;
+
+				grid.innerHTML = "";
+				grid.style.width = dimensions[0] + 'px';
+				grid.style.height = dimensions[1] + 'px';
+
+				for (i = 0; i < rows; i++) {
+
+					row = document.createElement('tr');
+
+					for (j = 0; j < columns; j++) {
+
+						cell = document.createElement('td');
+						cell.style['-webkit-animation-delay'] = Math.random().toFixed(2) + "s";
+						cell.style['-webkit-animation-duration'] = Math.random().toFixed(1) * 20 + "s";
+
+						row.appendChild(cell);
+					}
+
+					table.appendChild(row);
+				}
+
+				grid.appendChild(table);
+			}
+  
+			$(pull).on('click', function(e) {
+			    e.preventDefault();  
+			    menu.slideToggle();  
+			});  
+
+			window.onresize = function() {
+				var w = $(window).width();
+				if(w > 320 && menu.is(':hidden')) {  
+				    menu.removeAttr('style');  
+				}
+				drawGrid();
+			};
+			$(document).ready(function(){
+				drawGrid();
+			});
+		</script>
+	</body>
+</html>

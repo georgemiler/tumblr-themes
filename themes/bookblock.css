@@ -1,0 +1,159 @@
+@import url('font-awesome.min.css');
+@font-face
+{
+	font-family: fontawesome;
+	src: url("../assets/fonts/fontawesome-webfont.ttf");
+}
+html{
+	height: 100%;
+	min-height: 100%;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'Signika Negative', sans-serif;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-size: 16px;
+	height: 100%;
+}
+a {
+	text-decoration: none;
+	color: #1D54B6;
+}
+h1{
+	font-size: 5em;
+	letter-spacing: 3px;
+}
+h2{
+	font-size: 4em;	
+}
+h3{
+	font-size: 2em;
+}
+i{
+	font-family: fontawesome;
+}
+.cover{
+	background-color: #1D54B6;
+	width: 48%;
+	height: 100%;
+	color: #fff;
+	text-align: center;
+	position: fixed;
+}
+.cover a{
+	color: #fff;
+}
+.cover h1{
+	margin-top: 1em;
+}
+.cover .avatar{
+	margin-top: 20%;
+}
+.content{
+	background-color: #FFF;
+	width: 48%;
+	right: 0;
+	margin: 1em;
+	float: left;
+	margin-left: 50%;
+}
+/*helper style*/
+.unstyled{
+	list-style: none;
+}
+.post{
+	padding: 2em 0 1em 0;
+	border-bottom: 1px solid #D8D8D8;
+}
+.quote{
+	border-left: 3px solid #1D54B6;
+	padding-left: 0.8em;
+}
+.source{
+	color: #9E9191;
+	line-height: 3em;
+}
+
+.meta{
+	margin-top: 3em;
+}
+.meta li{
+	display: inline;
+	margin-right: 1em;
+	font-size: 0.8em;
+	border: 1px solid #D8D8D8;
+	padding: 0.5em 1em;
+	border-radius: 16px;
+}
+.meta li a{
+	color: #9E9191;
+}
+.tags{
+	font-size: 0.8em;
+}
+.tag{
+	text-decoration: underline;
+}
+.tag a{
+	display: inline;
+	margin-right: 10px;
+	color: #9E9191;
+}
+.photo{
+	width: 100%;
+}
+.photo a{
+	display: block;
+}
+.photo img{
+	max-width: 100%;
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+}
+.photo a:hover img{
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -webkit-filter: grayscale(0%);
+
+}
+.chat li{
+	padding: 0.5em;
+}
+.chat .person{
+	color: #9E9191;
+}
+.text p{
+	font-weight: 200;
+}
+.text ul{
+	margin: 1em 1em 1em 2em;
+}
+
+.currentPage{
+	float: right;
+}
+.pull-left{
+	float: left;
+}
+.pull-right{
+	float: right;
+}
+.followed{
+	clear: both;
+	padding-top: 3em;
+	text-align: center;
+}
+.followed li{
+	display: inline;
+}
+.copyright {
+	margin: 1em 0;
+	font-size: 0.8em;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
