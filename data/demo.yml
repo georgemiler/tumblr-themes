@@ -9,6 +9,8 @@ PortraitURL-64: "https://dl.dropboxusercontent.com/u/8063821/piclab%20copy.png"
 Pages:
   - Label: About Me
     URL: about_me/
+  - Label: Portfolio
+    URL: about_me/
 Following:
   - Name: staff
     Title: Tumblr Staff

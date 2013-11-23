@@ -24,15 +24,23 @@
 		<link href='http://fonts.googleapis.com/css?family=Signika+Negative' rel='stylesheet' type='text/css'>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<style type="text/css">
-
+			{CustomCSS}
 		</style>
 	</head>
 	<body>
 		<div class="cover">
-			<div class="avatar"><img src="{PortraitURL-64}" /></div>
-			<h1><a href="/">{Title}</a></h1>
-			<div class="description">{Description}</div>
+			<div class="animated bounceInDown">
+				<div class="avatar"><img src="{PortraitURL-64}" /></div>
+				<h1><a href="/">{Title}</a></h1>
+				<div class="description">{Description}</div>
+			</div>
+			{block:HasPages}
+				<ul class="unstyled pages">
+					{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
+				</ul>
+			{/block:HasPages}
 		</div>
+
 		<div class="content">
 			<!-- Loops for each post-type -->
 			{block:Posts}
@@ -56,8 +64,10 @@
 
 				{block:Link}
 					<div class="link">        
-						<h3><a href="{URL}" {Target}>{Name}</a></h3>
-						{block:Description}<p>{Description}</p>{/block:Description}
+						<h3><a href="{URL}" target="_blank">{Name}</a></h3>
+						{block:Description}
+							<p>{Description}</p>
+						{/block:Description}
 					</div>
 				{/block:Link}
 		  
@@ -91,7 +101,7 @@
 						{/block:Caption}
 					</div>
 				{/block:Photo}
-		  
+
 				{block:Chat}
 					<div class="chat">
 						<a href="{Permalink}">
@@ -166,7 +176,12 @@
 
 			  </div> <!-- end single post -->
 			{/block:Posts}
-			  
+			{block:HasPages}
+
+			{/block:HasPages}	
+
+
+
 			{block:PermalinkPagination}
 				<!-- Pagination only rendered on permalink pages -->
 				<ul class="meta unstyled">
@@ -191,7 +206,6 @@
 					{/block:PreviousPage}
 				</ul> <!-- end previous/next (pages) -->
 			{/block:Pagination}
-
 			{block:Following}
 			<div class="followed">
 				<p>I'm following these blogs</p>
@@ -205,9 +219,9 @@
 				</ul>
 			</div>
 			{/block:Following}
-
 			<!-- Please do not remove the line below -->
 			<p class="copyright">Powered by <a href="http://tumblr.com/">Tumblr</a>. Theme created by <a href="http://www.behance.net/AmieChen">Amie Chen</a>.<a href="{RSS}">RSS</a> <a href="/archive">archive</a></p>
+			
 		</div> <!-- end content -->
 	</body>
 </html>
