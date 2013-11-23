@@ -6,13 +6,6 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<!-- 	
-		<meta name="text:Website Address" content="" />
-		<meta name="text:Flickr Username" content="" />
-		<meta name="text:Twitter Username" content="" />
-		<meta name="text:Facebook Username" content="" />
-		<meta name="text:YouTube Username" content="" />
-		<meta name="text:Lastfm Username" content="" /> -->
 		
 		<!-- Google Analytics -->
 		<meta name="text:Google Analytics ID" content="" />
@@ -27,34 +20,15 @@
 		</style>
 	</head>
 	<body>
-		<nav class="clearfix">  
-		    <ul class="clearfix">
-			    <li><a href="/">{lang:Home}</a></li>
-				<li><a href="/archive/">{lang:Archive}</a></li>
-				<li><a href="{RSS}">{lang:RSS}</a></li>
-				<li><a href="/mobile">{lang:Mobile}</a></li>
-
-<!-- 			{block:IfWebsiteAddress}
-				<li><a href="{text:Website Address}">Website</a></li>
-			{/block:IfWebsiteAddress}
-			{block:IfTwitterUsername}
-				<li><a href="http://www.twitter.com/{text:Twitter Username}" class="twitter">Twitter</a></li>
-			{/block:IfTwitterUsername}
-			{block:IfFlickrUsername}
-				<li><a href="http://www.flickr.com/photos/{text:Flickr Username}" class="flickr">Flickr</a></li>
-			{/block:IfFlickrUsername}
-			{block:IfFacebookUsername}
-			<li><a href="http://www.facebook.com/{text:Facebook Username}" class="facebook">Facebook</a></li>
-			{/block:IfFacebookUsername}
-			{block:IfYouTubeUsername}
-				<li><a href="http://www.youtube.com/user/{text:YouTube Username}" class="twitter">YouTube</a></li>
-			{/block:IfYouTubeUsername}
-			{block:IfLastfmUsername}
-				<li><a href="http://www.last.fm/user/{text:Lastfm Username}" class="lastfm">Last.fm</a></li>
-			{/block:IfLastfmUsername} -->
-		    </ul>  
+		{block:HasPages}
+		<nav class="clearfix">
+			<ul class="clearfix">
+				<li><a href="/">Home</a></li>
+				{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
+			</ul>
 		    <a href="#" id="pull">Menu</a>  
-		</nav> 
+		</nav>
+		{/block:HasPages}
 		<div class="welcome">
 			<div id="grid"></div>
 			<div class="cover">
@@ -218,11 +192,11 @@
 
 			{block:Following}
 			<div class="followed">
-				<p>I'm following these blogs</p>
 				<ul class="unstyled">
+					<li>Blogroll &emsp;&#58;</li>
 					{block:Followed}
 						<li>
-							<a href="{FollowedURL}">
+							<a href="{FollowedURL}" target="_blank">
 								<img src="{FollowedPortraitURL-30}" alt="{FollowedName}" title="{FollowedTitle}"/></a>
 						</li>
 					{/block:Followed}
@@ -231,7 +205,7 @@
 			{/block:Following}
 
 			<!-- Please do not remove the line below -->
-			<p class="copyright">Powered by <a href="http://tumblr.com/">Tumblr</a>. Theme created by <a href="http://www.behance.net/AmieChen">Amie Chen</a>.<a href="{RSS}">RSS</a> <a href="/archive">archive</a></p>
+			<p class="copyright">Powered by <a href="http://tumblr.com/">Tumblr</a>. Theme created by <a href="http://www.behance.net/AmieChen">Amie Chen</a> <a href="{RSS}">&bull; RSS</a> <a href="/archive">&bull; archive</a></p>
 		</div> <!-- end content -->
 	  </div> <!-- end container -->
 		<script type="text/javascript">

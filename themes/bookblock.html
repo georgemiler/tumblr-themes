@@ -208,11 +208,11 @@
 			{/block:Pagination}
 			{block:Following}
 			<div class="followed">
-				<p>I'm following these blogs</p>
 				<ul class="unstyled">
+					<li>Blogroll &emsp;&#58;</li>
 					{block:Followed}
 						<li>
-							<a href="{FollowedURL}">
+							<a href="{FollowedURL}" target="_blank">
 								<img src="{FollowedPortraitURL-30}" alt="{FollowedName}" title="{FollowedTitle}"/></a>
 						</li>
 					{/block:Followed}
@@ -220,7 +220,7 @@
 			</div>
 			{/block:Following}
 			<!-- Please do not remove the line below -->
-			<p class="copyright">Powered by <a href="http://tumblr.com/">Tumblr</a>. Theme created by <a href="http://www.behance.net/AmieChen">Amie Chen</a>.<a href="{RSS}">RSS</a> <a href="/archive">archive</a></p>
+			<p class="copyright">Powered by <a href="http://tumblr.com/">Tumblr</a>. Theme created by <a href="http://www.behance.net/AmieChen">Amie Chen</a> <a href="{RSS}">&bull; RSS</a> <a href="/archive">&bull; archive</a></p>
 			
 		</div> <!-- end content -->
 	</body>
