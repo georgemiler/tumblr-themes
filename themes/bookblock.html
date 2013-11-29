@@ -24,23 +24,246 @@
 		<link href='http://fonts.googleapis.com/css?family=Signika+Negative' rel='stylesheet' type='text/css'>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<style type="text/css">
-		
+@import url('font-awesome.min.css');
+@font-face
+{
+	font-family: fontawesome;
+	src: url("../assets/fonts/fontawesome-webfont.ttf");
+}
+html{
+	height: 100%;
+	min-height: 100%;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'Signika Negative', sans-serif;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-size: 20px;
+	height: 100%;
+	background-color: #E7E7E7;
+	color: #8F8B8B;
+}
+a {
+	text-decoration: none;
+	color: #726060;
+}
+a:hover{
+	color:#f69679;
+}
+h2{
+	font-size: 4em;	
+}
+h3{
+	font-size: 2em;
+}
+i{
+	font-family: fontawesome;
+}
+article, aside, footer, header, hgroup, main, nav, section{
+	display: block;
+}
+.wrapper{
+	width: 80%;
+	margin: 0 auto;
+	max-width: 980px;
+}
+header{
+	text-align: center;
+	margin-bottom: 5em;
+	margin-top: -7em;
+	padding-bottom: 8em;
+}
+header h1{
+	background: url("http://666a658c624a3c03a6b2-25cda059d975d2f318c03e90bcf17c40.r92.cf1.rackcdn.com/unsplash_5287d4367585d_1.JPG") fixed;
+	-webkit-text-fill-color: transparent;
+	text-fill-color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	text-transform: uppercase;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	letter-spacing: 30px;
+	font-size: 15em;
+	word-wrap: break-word;
+}
+header h1:after{
+}
+aside{
+	float: left;
+	width: 20%;
+	padding: 0 1em;
+	background-color: white;
+}
+aside section{
+	border-bottom: 1px solid  #B4B1B0;
+	padding-bottom: 1em;
+}
+aside section:first-child{
+	padding-top: 0;
+}
+aside section:last-child{
+	border-bottom: 0;
+}
+aside h4{
+	margin: 1em 0;
+	font-size: 1.2em;
+	color: #726060;
+}
+aside p{
+	font-size: 0.9em;
+}
+aside a{
+	color: #726060;
+}
+article{
+	margin: 0 64px 91px 0;
+	float: left;
+	width: 680px;
+}
+article.single-post{
+	width: 100%;
+}
+.meta{
+	float: left;
+	margin: 10px 0 0 -150px;
+	opacity: 0;
+	transition: visibility 0s ease-in-out 0.5s,opacity 0.5s ease-in-out;
+	-webkit-transition: visibility 0s ease-in-out 0.5s,opacity 0.5s ease-in-out;
+	-moz-transition: visibility 0s ease-in-out 0.5s,opacity 0.5s ease-in-out;
+	-o-transition: visibility 0s ease-in-out 0.5s,opacity 0.5s linear;
+}
+.meta li{
+	font-size: 0.8em;
+	border: 1px solid  #B4B1B0;
+	padding: 0.5em 1em;
+	border-radius: 16px;
+	margin-bottom: 1em;
+}
+.avatar{
+	height: 50px;
+	width: 50px;
+	float: left;
+	margin-right: 1em;
+}
+.avatar img{
+	max-width: 100%;
+	border-radius: 50px;
+	border: 5px solid #726060;
+}
+/*helper style*/
+.unstyled{
+	list-style: none;
+}
+.post{
+	border-bottom: 1px solid  #B4B1B0;
+	padding-bottom: 4em;
+	margin-bottom: 3em;
+	position: relative;
+}
+.post:hover .meta{
+	opacity: 1;
+}
+.quote{
+	border-left: 0.4em solid #f69679;
+	padding-left: 1em;
+}
+.source{
+	color: #9E9191;
+	line-height: 3em;
+}
+.tags{
+	font-size: 0.8em;
+	position: absolute;
+	bottom: 1em;
+}
+.tag{
+	text-decoration: underline;
+}
+.tag a{
+	display: inline;
+	margin-right: 10px;
+	color: #9E9191;
+}
+.video, .photo{
+	width: 100%;
+}
+.photo .caption{
+	margin-top: 1em;
+}
+.photo a{
+	display: block;
+}
+.photo img{
+	max-width: 100%;
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+    background-size: cover;
+	width: 100%;
+}
+.photo a:hover img{
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+    -webkit-filter: grayscale(0%);
+
+}
+.chat li{
+	padding: 0.5em;
+}
+.chat .person{
+	color: #9E9191;
+}
+.text p{
+	font-weight: 200;
+}
+.text ul{
+	margin: 1em 1em 1em 2em;
+}
+
+.currentPage{
+	float: right;
+}
+.pull-left{
+	float: left;
+}
+.pull-right{
+	float: right;
+}
+.following{
+	overflow: auto;
+}
+.following li{
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.following li img{
+	border-radius: 40px;
+	border: 3px solid #726060; 
+}
+.copyright {
+	color: #5E9FC3;
+	text-align: center;
+	margin-bottom: 2em;
+	font-size: 0.8em;
+}
 			{CustomCSS}
 		</style>
 	</head>
 	<body>
 			<header>
-				<div class="animated bounceInDown">
-					<h1><a href="/">{Title}</a></h1>
-					<div class="description">{Description}</div>
-				</div>
+				<h1><a href="/">{Title}</a></h1>
+				<div class="description">{Description}</div>
 			</header>
 			<section class="wrapper">
-				<article>
+				{block:PermalinkPage}<article class="single-post">{/block:PermalinkPage}
+				{block:IndexPage}<article>{/block:IndexPage}
 					<!-- Loops for each post-type -->
 					{block:Posts}
-						
-
 					<div class="post {TagsAsClasses}">
 						<!-- post meta -->
 						<ul class="meta unstyled">
@@ -52,33 +275,7 @@
 							{block:NoteCount}
 								<li><a href="{Permalink}">{NoteCount} Notes</a></li>
 								{/block:NoteCount}
-								<li><a href="{Permalink}">&#8734; Permalink</a></li>
 						</ul>
-
-						{block:PermalinkPage}
-							<ul class="meta">
-								{block:Date}
-									<li><a href="{Permalink}"> {DayOfMonth} {Month} {Year}</a></li>
-								{/block:Date}
-								{block:HasTags}
-									<li>{block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}</li>
-								{/block:HasTags}
-								{block:NoteCount}
-									<li><a href="{Permalink}">{NoteCount}</a></li>
-								{/block:NoteCount}
-							</ul>
-							{block:PostNotes}
-								{PostNotes}
-							{/block:PostNotes}
-
-							{block:IfDisqusShortname}
-								<div id="disqus_thread"></div>
-								<script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
-								<noscript>
-									<a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a>
-								</noscript>
-							{/block:IfDisqusShortname}
-						{/block:PermalinkPage}
 						<!-- / post meta -->
 						{block:Text}
 							<div class="text">
@@ -127,15 +324,31 @@
 							<div class="photo">
 								{LinkOpenTag}
 									<a href="{Permalink}">
-										<img src="{PhotoURL-400}" alt="{PhotoAlt}"/>
+										<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
 									</a>
 								{LinkCloseTag}
 								{block:Caption}
-									<p>{Caption}</p>
+									<p class="caption">{Caption}</p>
 								{/block:Caption}
 							</div>
 						{/block:Photo}
+						{block:Photoset}
+							{block:Photos}
+							<div class="photo">
+								<a href="{Permalink}">
+									<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+								</a>
+							</div>
+							{block:Caption}
+									<p class="caption">{Caption}</p>
+							{/block:Caption}
 
+							{/block:Photos}
+
+							{block:Caption}
+								<p>{Caption}</p>
+							{/block:Caption}
+						{/block:Photoset}
 						{block:Chat}
 							<div class="chat">
 								<a href="{Permalink}">
@@ -159,6 +372,11 @@
 								</li>
 							{/block:HasTags}
 						</ul>
+						{block:PermalinkPage}
+							{block:PostNotes}
+								{PostNotes}
+							{/block:PostNotes}
+						{/block:PermalinkPage}
 						<!-- Only rendered if the post was reblogged from someone else -->
 						{block:RebloggedFrom}
 						<p>This post was reblogged from <a href="{ReblogParentURL}" title="{ReblogParentTitle}">{ReblogParentTitle}</a>.</p>
@@ -192,10 +410,30 @@
 							{/block:PreviousPage}
 						</ul> <!-- end previous/next (pages) -->
 					{/block:Pagination}
-					{block:Following}
-					<div class="followed">
+
+					<!-- Please do not remove the line below -->
+					<p class="copyright">Powered by <a href="http://tumblr.com/">Tumblr</a>. Theme created by <a href="http://www.behance.net/AmieChen">Amie Chen</a></p>
+				{block:IndexPage}</article>{/block:IndexPage}
+				{block:PermalinkPage}</article>{/block:PermalinkPage}
+				{block:IndexPage}
+				<aside>
+					<section class="profile">
+						<h4>Profile</h4>
+						<div class="avatar"><img src="{PortraitURL-64}" /></div>
+						<p>Your Name something about myself Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					</section>
+					{block:HasPages}
+					<section>
+						<h4>Pages</h4>
 						<ul class="unstyled">
-							<li>Blogroll &emsp;&#58;</li>
+							{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
+						</ul>
+					</section>
+					{/block:HasPages}
+					{block:Following}
+					<section class="following">
+						<h4>Following</h4>
+						<ul class="unstyled">
 							{block:Followed}
 								<li>
 									<a href="{FollowedURL}" target="_blank">
@@ -203,20 +441,14 @@
 								</li>
 							{/block:Followed}
 						</ul>
-					</div>
+					</section>
 					{/block:Following}
-					<!-- Please do not remove the line below -->
-					<p class="copyright">Powered by <a href="http://tumblr.com/">Tumblr</a>. Theme created by <a href="http://www.behance.net/AmieChen">Amie Chen</a> <a href="{RSS}">&bull; RSS</a> <a href="/archive">&bull; archive</a></p>
-				</article>
-
-				<aside>
-					<div class="avatar"><img src="{PortraitURL-64}" /></div>
-					{block:HasPages}
-						<ul class="unstyled pages">
-							{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
-						</ul>
-					{/block:HasPages}
+					<section>
+						<h4><a href="{RSS}">RSS</a></h4>
+						<h4><a href="/archive">archive</a></h4>
+					</section>
 				</aside>
+				{/block:IndexPage}
 			</section> <!-- end content -->
 
 	</body>
