@@ -24,204 +24,200 @@
 		<link href='http://fonts.googleapis.com/css?family=Signika+Negative' rel='stylesheet' type='text/css'>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<style type="text/css">
+		
 			{CustomCSS}
 		</style>
 	</head>
 	<body>
-		<div class="cover">
-			<div class="animated bounceInDown">
-				<div class="avatar"><img src="{PortraitURL-64}" /></div>
-				<h1><a href="/">{Title}</a></h1>
-				<div class="description">{Description}</div>
-			</div>
-			{block:HasPages}
-				<ul class="unstyled pages">
-					{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
-				</ul>
-			{/block:HasPages}
-		</div>
+			<header>
+				<div class="animated bounceInDown">
+					<h1><a href="/">{Title}</a></h1>
+					<div class="description">{Description}</div>
+				</div>
+			</header>
+			<section class="wrapper">
+				<article>
+					<!-- Loops for each post-type -->
+					{block:Posts}
+						
 
-		<div class="content">
-			<!-- Loops for each post-type -->
-			{block:Posts}
-			  <div class="post {TagsAsClasses}">
+					<div class="post {TagsAsClasses}">
+						<!-- post meta -->
+						<ul class="meta unstyled">
+							{block:Date}
+								<li><a href="{Permalink}">{DayOfMonth} {ShortMonth} {Year}</a></li>
+								{/block:Date}
+							{block:IfDisqusShortname}
+								<li><a href="{Permalink}#disqus_thread">{lang:Comment}</a></li>{/block:IfDisqusShortname}
+							{block:NoteCount}
+								<li><a href="{Permalink}">{NoteCount} Notes</a></li>
+								{/block:NoteCount}
+								<li><a href="{Permalink}">&#8734; Permalink</a></li>
+						</ul>
 
-				{block:Text}
-					<div class="text">
-						<h3><a href="{Permalink}">{Title}</a></h3>
-						<p>{Body}</p>
-					</div>
-				{/block:Text}
-
-				{block:Quote}
-					<div class="quote">
-						<h3><a href="{Permalink}">{Quote}</a></h3>
-						{block:Source}
-							<p class="source">&mdash; <a href="{URL}">{Source}</a></p>
-						{/block:Source}
-					</div>
-				{/block:Quote}
-
-				{block:Link}
-					<div class="link">        
-						<h3><a href="{URL}" target="_blank">{Name}</a></h3>
-						{block:Description}
-							<p>{Description}</p>
-						{/block:Description}
-					</div>
-				{/block:Link}
-		  
-				{block:Video}
-					<div class="video">
-						<a href="{Permalink}">
-						{Video-400}
-						{block:Caption}<p>{Caption}</p>{/block:Caption}
-						</a>
-					</div> 
-				{/block:Video}
-		  
-				{block:Audio}
-					<div class="audio">
-						<a href="{Permalink}">
-						{AudioPlayerBlack}
-						{block:Caption}<p>{Caption}</p>{/block:Caption}
-						</a>
-					</div>
-				{/block:Audio}
-		  
-				{block:Photo}
-					<div class="photo">
-						{LinkOpenTag}
-							<a href="{Permalink}">
-								<img src="{PhotoURL-400}" alt="{PhotoAlt}"/>
-							</a>
-						{LinkCloseTag}
-						{block:Caption}
-							<p>{Caption}</p>
-						{/block:Caption}
-					</div>
-				{/block:Photo}
-
-				{block:Chat}
-					<div class="chat">
-						<a href="{Permalink}">
-							<ul class="conversation unstyled">
-								{block:Lines}
-								<li class="line {Alt}">
-									{block:Label}
-									<span class="person"> {Label}</span>
-									{/block:Label}
-									<span class="person-said">: {Line}</span>
-								</li>
-								{/block:Lines}
+						{block:PermalinkPage}
+							<ul class="meta">
+								{block:Date}
+									<li><a href="{Permalink}"> {DayOfMonth} {Month} {Year}</a></li>
+								{/block:Date}
+								{block:HasTags}
+									<li>{block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}</li>
+								{/block:HasTags}
+								{block:NoteCount}
+									<li><a href="{Permalink}">{NoteCount}</a></li>
+								{/block:NoteCount}
 							</ul>
-						</a>
-					</div> 
-				{/block:Chat}
-				
-				<!-- Only rendered if the post was reblogged from someone else -->
-				{block:RebloggedFrom}
-				<p>This post was reblogged from <a href="{ReblogParentURL}" title="{ReblogParentTitle}">{ReblogParentTitle}</a>.</p>
-				{/block:RebloggedFrom}
-				
-				<!-- post meta -->
-				{block:IndexPage}
-					<ul class="meta unstyled">
-						{block:Date}
-							<li><a href="{Permalink}">{DayOfMonth} {ShortMonth} {Year}</a></li>
-							{/block:Date}
-						{block:IfDisqusShortname}
-							<li><a href="{Permalink}#disqus_thread">{lang:Comment}</a></li>{/block:IfDisqusShortname}
-						{block:NoteCount}
-							<li><a href="{Permalink}">{NoteCount} Notes</a></li>
-							{/block:NoteCount}
-							<li><a href="{Permalink}">&#8734; Permalink</a></li>
-					</ul>
-					<br>
-					<ul class="unstyled tags">
-						{block:HasTags}
-							<li class="tag">
-								{block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
-							</li>
-						{/block:HasTags}
-					</ul>
+							{block:PostNotes}
+								{PostNotes}
+							{/block:PostNotes}
 
-				{/block:IndexPage}
+							{block:IfDisqusShortname}
+								<div id="disqus_thread"></div>
+								<script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
+								<noscript>
+									<a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a>
+								</noscript>
+							{/block:IfDisqusShortname}
+						{/block:PermalinkPage}
+						<!-- / post meta -->
+						{block:Text}
+							<div class="text">
+								<h3><a href="{Permalink}">{Title}</a></h3>
+								<p>{Body}</p>
+							</div>
+						{/block:Text}
 
-				{block:PermalinkPage}
-					<ul class="meta">
-						{block:Date}
-							<li><a href="{Permalink}"> {DayOfMonth} {Month} {Year}</a></li>
-						{/block:Date}
-						{block:HasTags}
-							<li>{block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}</li>
-						{/block:HasTags}
-						{block:NoteCount}
-							<li><a href="{Permalink}">{NoteCount}</a></li>
-						{/block:NoteCount}
-					</ul>
-					{block:PostNotes}
-						{PostNotes}
-					{/block:PostNotes}
+						{block:Quote}
+							<div class="quote">
+								<h3><a href="{Permalink}">{Quote}</a></h3>
+								{block:Source}
+									<p class="source">&mdash; <a href="{URL}">{Source}</a></p>
+								{/block:Source}
+							</div>
+						{/block:Quote}
 
-					{block:IfDisqusShortname}
-						<div id="disqus_thread"></div>
-						<script type="text/javascript" src="http://disqus.com/forums/{text:Disqus Shortname}/embed.js"></script>
-						<noscript>
-							<a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">{lang:View the discussion thread}</a>
-						</noscript>
-					{/block:IfDisqusShortname}
-				{/block:PermalinkPage}
-				<!-- / post meta -->
+						{block:Link}
+							<div class="link">        
+								<h3><a href="{URL}" target="_blank">{Name}</a></h3>
+								{block:Description}
+									<p>{Description}</p>
+								{/block:Description}
+							</div>
+						{/block:Link}
+				  
+						{block:Video}
+							<div class="video">
+								<a href="{Permalink}">
+								{Video-400}
+								{block:Caption}<p>{Caption}</p>{/block:Caption}
+								</a>
+							</div> 
+						{/block:Video}
+				  
+						{block:Audio}
+							<div class="audio">
+								<a href="{Permalink}">
+								{AudioPlayerBlack}
+								{block:Caption}<p>{Caption}</p>{/block:Caption}
+								</a>
+							</div>
+						{/block:Audio}
+				  
+						{block:Photo}
+							<div class="photo">
+								{LinkOpenTag}
+									<a href="{Permalink}">
+										<img src="{PhotoURL-400}" alt="{PhotoAlt}"/>
+									</a>
+								{LinkCloseTag}
+								{block:Caption}
+									<p>{Caption}</p>
+								{/block:Caption}
+							</div>
+						{/block:Photo}
 
-			  </div> <!-- end single post -->
-			{/block:Posts}
-			{block:HasPages}
+						{block:Chat}
+							<div class="chat">
+								<a href="{Permalink}">
+									<ul class="conversation unstyled">
+										{block:Lines}
+										<li class="line {Alt}">
+											{block:Label}
+											<span class="person"> {Label}</span>
+											{/block:Label}
+											<span class="person-said">: {Line}</span>
+										</li>
+										{/block:Lines}
+									</ul>
+								</a>
+							</div> 
+						{/block:Chat}
+						<ul class="unstyled tags">
+							{block:HasTags}
+								<li class="tag">
+									{block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
+								</li>
+							{/block:HasTags}
+						</ul>
+						<!-- Only rendered if the post was reblogged from someone else -->
+						{block:RebloggedFrom}
+						<p>This post was reblogged from <a href="{ReblogParentURL}" title="{ReblogParentTitle}">{ReblogParentTitle}</a>.</p>
+						{/block:RebloggedFrom}
 
-			{/block:HasPages}	
 
+					  </div> <!-- end single post -->
+					{/block:Posts}
 
+					{block:PermalinkPagination}
+						<!-- Pagination only rendered on permalink pages -->
+						<ul class="meta unstyled">
+							{block:PreviousPost}
+								<li class="pull-left"><a href="{PreviousPost}" class="pull-left">&#8592; Previous Post</a></li>
+							{/block:PreviousPost}
+							{block:NextPost}
+								<li class="pull-right"><a href="{NextPost}" >Next Post &#8594;</a></li>
+							{/block:NextPost}
+						</ul> <!-- end previous/next (posts) -->
+					{/block:PermalinkPagination}
 
-			{block:PermalinkPagination}
-				<!-- Pagination only rendered on permalink pages -->
-				<ul class="meta unstyled">
-					{block:PreviousPost}
-						<li class="pull-left"><a href="{PreviousPost}" class="pull-left">&#8592; Previous Post</a></li>
-					{/block:PreviousPost}
-					{block:NextPost}
-						<li class="pull-right"><a href="{NextPost}" >Next Post &#8594;</a></li>
-					{/block:NextPost}
-				</ul> <!-- end previous/next (posts) -->
-			{/block:PermalinkPagination}
+					{block:Pagination}
+						<!-- Pagination only rendered on index pages -->
+						<ul class="meta unstyled">
+							<li class="currentPage">Page {CurrentPage} of {TotalPages}</li>
+							{block:NextPage}
+								<li class="pull-left"><a href="{NextPage}">&#8592; Older Entries</a></li>
+							{/block:NextPage}
+							{block:PreviousPage}
+								<li class="pull-left"><a href="{PreviousPage}">Newer Entries &#8594;</a></li>
+							{/block:PreviousPage}
+						</ul> <!-- end previous/next (pages) -->
+					{/block:Pagination}
+					{block:Following}
+					<div class="followed">
+						<ul class="unstyled">
+							<li>Blogroll &emsp;&#58;</li>
+							{block:Followed}
+								<li>
+									<a href="{FollowedURL}" target="_blank">
+										<img src="{FollowedPortraitURL-30}" alt="{FollowedName}" title="{FollowedTitle}"/></a>
+								</li>
+							{/block:Followed}
+						</ul>
+					</div>
+					{/block:Following}
+					<!-- Please do not remove the line below -->
+					<p class="copyright">Powered by <a href="http://tumblr.com/">Tumblr</a>. Theme created by <a href="http://www.behance.net/AmieChen">Amie Chen</a> <a href="{RSS}">&bull; RSS</a> <a href="/archive">&bull; archive</a></p>
+				</article>
 
-			{block:Pagination}
-				<!-- Pagination only rendered on index pages -->
-				<ul class="meta unstyled">
-					<li class="currentPage">Page {CurrentPage} of {TotalPages}</li>
-					{block:NextPage}
-						<li class="pull-left"><a href="{NextPage}">&#8592; Older Entries</a></li>
-					{/block:NextPage}
-					{block:PreviousPage}
-						<li class="pull-left"><a href="{PreviousPage}">Newer Entries &#8594;</a></li>
-					{/block:PreviousPage}
-				</ul> <!-- end previous/next (pages) -->
-			{/block:Pagination}
-			{block:Following}
-			<div class="followed">
-				<ul class="unstyled">
-					<li>Blogroll &emsp;&#58;</li>
-					{block:Followed}
-						<li>
-							<a href="{FollowedURL}" target="_blank">
-								<img src="{FollowedPortraitURL-30}" alt="{FollowedName}" title="{FollowedTitle}"/></a>
-						</li>
-					{/block:Followed}
-				</ul>
-			</div>
-			{/block:Following}
-			<!-- Please do not remove the line below -->
-			<p class="copyright">Powered by <a href="http://tumblr.com/">Tumblr</a>. Theme created by <a href="http://www.behance.net/AmieChen">Amie Chen</a> <a href="{RSS}">&bull; RSS</a> <a href="/archive">&bull; archive</a></p>
-			
-		</div> <!-- end content -->
+				<aside>
+					<div class="avatar"><img src="{PortraitURL-64}" /></div>
+					{block:HasPages}
+						<ul class="unstyled pages">
+							{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}
+						</ul>
+					{/block:HasPages}
+				</aside>
+			</section> <!-- end content -->
+
 	</body>
 </html>

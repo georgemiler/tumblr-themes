@@ -16,7 +16,423 @@
 		<link rel="stylesheet" type="text/css" href="themes/travel.css"></link>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<style type="text/css">
+@font-face
+{
+	font-family: Aller;
+	src: url("http://static.tumblr.com/ytgf9mh/2BRmw16e2/aller_lt.ttf");
+}
+@font-face
+{
+	font-family: DharmaGothicP;
+	src: url("http://static.tumblr.com/ytgf9mh/Eaumw16f2/dharmagothicp-regular.otf");
+}
+html{
+	height: 100%;
+	min-height: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-size: 16px;
+	font-family: 'Aller', sans-serif;
+	height: 100%;
+	color: #6E7C88;
+}
+a {
+	color: #2A3F50;
+	text-decoration: none;
+}
+h1,h2,h3,h4{
+	font-family: 'DharmaGothicP', sans-serif;
+	text-transform: uppercase;
+	color: #435564;
+	text-align: center;
+}
+h1{
+	font-size: 6em;
+	letter-spacing: 8px;
+}
+h2{
+	font-size: 3em;
+	letter-spacing: 5px;	
+}
+h3{
+	font-size: 3em;
+	letter-spacing: 4px;
+	margin-bottom: 0.5em;
+	color: #557B9C;
+	text-align: left;
+}
+pre{
+	white-space: pre-wrap;
+}
+nav {  
+    height: 40px;  
+    width: 100%;
+    position: fixed;  
+    border-bottom: 2px solid #283744;
+    background: #283744;
+    z-index: 1000;
+}  
+nav ul {  
+    padding: 0;  
+    margin: 0 auto;  
+    text-align: center;
+    height: 40px;  
+}
+nav li {  
+    display: inline;  
+}
+nav a {  
+    color: #fff;  
+    display: inline-block;  
+    width: 150px;  
+    text-align: center;  
+    text-decoration: none;  
+    line-height: 40px;  
+    text-shadow: 1px 1px 0px #283744;  
+}
+nav li a {  
+    border-right: 1px solid #576979;  
+    box-sizing:border-box;  
+    -moz-box-sizing:border-box;  
+    -webkit-box-sizing:border-box;  
+}  
+nav li:last-child a {  
+    border-right: 0;  
+}
+nav a:hover, nav a:active {  
+    background-color: #39444E;  
+}
+nav a#pull {  
+    display: none;  
+} 
+/*clearfix*/
+.clearfix:before,  
+.clearfix:after {  
+    content: " ";  
+    display: table;  
+}  
+.clearfix:after {  
+    clear: both;  
+}  
+.clearfix {  
+    *zoom: 1;  
+} 
+/*theme*/
+.welcome{
+	width: 100%;
+	height: 60%;
+	position: relative;
+	text-align: center;
+	overflow: hidden;
+}
+.cover{
+	width: 100%;
+	position: absolute;
+	top: 25%;
+	left: 0;
+	right: 0;
+	display: block;
+}
+.cloud{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+}
+.cloud-main{
+	background: url("http://static.tumblr.com/ytgf9mh/KaPmw16bg/main-cloud.png") 20em no-repeat;
+	height: 413px;
+	left: 14%;
+	bottom: -4em;
+}
+.cloud-back{
+	background: url("http://static.tumblr.com/ytgf9mh/CpRmw16ad/back-cloud-repeat.png") repeat-x;
+	height: 177px;
+	left: 0;
+}
+.header h1 a{
+	text-decoration: none;
+}
+.header h1{
+	text-align: center;
+	margin-top: 1em;
+}
+.container{
+	position: relative;
+}
+.content{
+	width: 50%;
+	margin: 5% auto;
+	text-align: center;
+	border-left: 1px dotted #D8DDE1;
+	border-right: 1px dotted #D8DDE1;
+	padding: 2em;
+}
+.description{
+	margin: 0 30%;
+	padding: 0.6em;
+	border-top: 2px dotted #FFF;
+	border-bottom: 2px dotted #FFF;
+	margin-bottom: 2px;
+	text-transform: uppercase;
+	font-size: 1.1em;
+	letter-spacing: 3px;
+	overflow: auto;
+	text-shadow: 1px 1px 5px rgb(156, 156, 156);
+	color: #fff;
+}
+.meta{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: absolute;
+	left: 10px;
+	bottom: 1em;
+	opacity: 0;
+	transition: visibility 0s ease-in-out 0.5s,opacity 0.5s ease-in-out;
+	-webkit-transition: visibility 0s ease-in-out 0.5s,opacity 0.5s ease-in-out;
+	-moz-transition: visibility 0s ease-in-out 0.5s,opacity 0.5s ease-in-out;
+	-o-transition: visibility 0s ease-in-out 0.5s,opacity 0.5s linear;
+}
+.meta li{
+	margin-right: 10px;
+	display: inline;
+}
+.meta li a{
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	background: rgba(241, 243, 245, 0.3);
+	padding: 0em 0.7em 0em 0.5333333333333333em;
+	font-size: 0.7333333333333333em;
+	color: #6E7C88;
+	text-transform: capitalize;
+}
+.post{
+	margin: 2.5em 0;
+	border-bottom: 1px dotted #D8DDE1;
+	padding: 1em 1.2em 4.5em 1.2em;
+	text-align: left;
+	position: relative;
+}
+.post p{
+	line-height: 1.6em;
+}
+.post .text h3 a{
+	text-decoration: none;
+}
+.post .text p{
+	margin-bottom: 0.6em;
+}
+.post .text a{
+	font-weight: bold;
+	text-decoration: underline;
+}
+.post .text ul{
+	margin: 1em 1em 1em 3em;
+}
+.post .text blockquote{
+	padding-left: 0.8em;
+	border-left: 3px solid #77B6E9;
+	margin: 2em 0 2em 2em;
+}
+.post .text pre li:nth-child(even), .post .text code li:nth-child(even){
+	background: #F1F3F5;
+}
+.post:hover .meta{
+	visibility: visible;
+	opacity: 1;
+	transition-delay: 0s;
+	-webkit-transition-delay: 0s;
+	-moz-transition-delay: 0s;
+	-o-transition-delay: 0s;
+}
+.post:hover h3 a{
+	color: #435564;
+}
+.post .photo img{
+	border: 3px solid #ABD3C9;
+}
+.post .photo{
+	margin-bottom: 1em;
+}
+.post .chat ul{
+	list-style: none;
+}
+.post .chat ul li{
+	background-color: #ABD3C9;
+	margin: 1em 0;
+	border-radius: 6px;
+	padding: 1.3em;
+	position: relative;
+}
+.post .chat .person{
+	font-weight: bold;
+	margin-right: 10px;
+}
+.post .chat ul li:nth-child(odd){
+	margin-right: 4em;
+}
+.post .chat ul li:nth-child(odd):after{
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 0;
+	border-right: 10px solid #ABD3C9;
+	border-bottom: 10px solid rgba(0, 0, 0, 0);
+	border-top: 10px solid rgba(0, 0, 0, 0);
+	top: 20px;
+	left: -10px;
+}
+.post .chat ul li:nth-child(even){
+	margin-left: 4em;
+}
+.post .chat ul li:nth-child(even):after{
+	position: absolute;
+	content: "";
+	width: 0;
+	height: 0;
+	border-left: 10px solid #ABD3C9;
+	border-bottom: 10px solid rgba(0, 0, 0, 0);
+	border-top: 10px solid rgba(0, 0, 0, 0);
+	top: 20px;
+	right: -10px;
+}
+.unstyled{
+	list-style: none;
+}
+.unstyled li{
+	display: inline;
+}
+.currentPage{
+	float: right;
+}
+.pull-left{
+	float: left;
+}
+.pull-right{
+	float: right;
+}
+.followed{
+	clear: both;
+	padding-top: 3em;
+}
+.copyright {
+	margin: 1em 0;
+	font-size: 0.8em;
+}
+/*snow*/
+#grid {
+  margin: 0 auto;
+  overflow: hidden;
+}
 
+#grid table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+#grid td {
+	-webkit-animation-name: glow;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: ease;
+	-webkit-transform: translate3d(0, 0, 0);
+/*	-webkit-backface-visibility: hidden;*/
+	background-color: #ABD3C9;/*customizable*/
+	height: 80px;
+	padding: 0;
+	width: 80px;
+	opacity: 1;
+}
+@-webkit-keyframes glow {
+  	0% { opacity: 0.85; }
+  	10% { opacity: 0.88; }
+  	20% { opacity: 0.91; }
+	50% { opacity: 0.95;  }
+	70% { opacity: 0.97;  }
+	100% { opacity: 1;  }
+}
+@media screen and (max-width: 600px) {  
+    nav {   
+        height: auto;  
+    }  
+    nav ul {  
+        width: 100%;  
+        display: block;  
+        height: auto;  
+    }  
+    nav li {  
+        width: 50%;  
+        float: left;  
+        position: relative;  
+    }  
+    nav li a {  
+        border-bottom: 1px solid #576979;  
+        border-right: 1px solid #576979;  
+    }  
+    nav a {  
+        text-align: left;  
+        width: 100%;  
+        text-indent: 25px;  
+    }
+    .content{
+    	width: 90%;
+    }
+}
+@media only screen and (max-width : 480px) {  
+    nav {  
+        border-bottom: 0;  
+    }  
+    nav ul {  
+        display: none;  
+        height: auto;  
+    }  
+    nav a#pull {  
+        display: block;  
+        background-color: #283744;  
+        width: 100%;  
+        position: relative;  
+    }  
+    nav a#pull:after {  
+        content:"";  
+        background: url("http://static.tumblr.com/ytgf9mh/Z25mwf8zi/nav-icon.png") no-repeat;  
+        width: 30px;  
+        height: 30px;  
+        display: inline-block;  
+        position: absolute;  
+        right: 15px;  
+        top: 10px;  
+    }
+    h1{
+    	font-size: 5em;
+    }
+    .content{
+    	width: 90%;
+    }
+}
+@media only screen and (max-width : 320px) {  
+    nav li {  
+        display: block;  
+        float: none;  
+        width: 100%;  
+    }  
+    nav li a {  
+        border-bottom: 1px solid #576979;  
+    }
+    h1{
+    	font-size: 4em;
+    }
+    .description{
+    	margin: 0 10%;
+    }
+    .content{
+    	width: 90%;
+    }
+} 
 		</style>
 	</head>
 	<body>

@@ -17,10 +17,11 @@ html{
 body{
 	font-size: 16px;
 	height: 100%;
+	background-color: #1D54B6;
 }
 a {
 	text-decoration: none;
-	color: #1D54B6;
+	color: white;
 }
 h1{
 	font-size: 5em;
@@ -35,56 +36,47 @@ h3{
 i{
 	font-family: fontawesome;
 }
-.sideNav{
-	position: fixed;
-	left: 0;
-	top: 0;
+article, aside, footer, header, hgroup, main, nav, section{
+	display: block;
 }
-.cover{
-	background-color: #1D54B6;
-	width: 38%;
-	height: 100%;
-	color: #fff;
+.wrapper{
+	width: 80%;
+	margin: 0 auto;
+	max-width: 980px;
+}
+header{
 	text-align: center;
-	position: fixed;
+	padding: 8em;
+	margin-bottom: 5em;
 }
-.cover a{
-	color: #fff;
-}
-.cover h1{
-	margin-top: 0.5em;
-	width: 90%;
-	margin: 0 auto;
-}
-.cover .avatar{
-	margin-top: 20%;
-}
-.cover .pages{
-	position: absolute;
-	width: 100%;
-	bottom: 20%;
-}
-.cover .pages li{
-	margin-top: 0.5em;
-	padding: 0.1em;
-}
-.description{
-	color: #5A9FD4;
-	width: 60%;
-	margin: 0 auto;
-}
-.content{
-	background-color: #FFF;
-	width: 58%;
-	right: 0;
-	margin: 1em;
+aside{
 	float: left;
-	margin-left: 40%;
+	width: 20%;
+}
+article{
+	margin: 0 64px 91px 0;
+	float: left;
+	width: 680px;
+}
+.meta{
+	float: left;
+	margin: 0 0 0 -150px;
+	opacity: 0;
+	transition: visibility 0s ease-in-out 0.5s,opacity 0.5s ease-in-out;
+	-webkit-transition: visibility 0s ease-in-out 0.5s,opacity 0.5s ease-in-out;
+	-moz-transition: visibility 0s ease-in-out 0.5s,opacity 0.5s ease-in-out;
+	-o-transition: visibility 0s ease-in-out 0.5s,opacity 0.5s linear;
+}
+.meta li{
+	font-size: 0.8em;
+	border: 1px solid #2D6EC2;
+	padding: 0.5em 1em;
+	border-radius: 16px;
+	margin-bottom: 1em;
 }
 .avatar{
-	height: 130px;
-	width: 130px;
-	margin: 50% auto 5% auto;
+	height: 100px;
+	width: 100px;
 }
 .avatar img{
 	max-width: 100%;
@@ -96,8 +88,12 @@ i{
 	list-style: none;
 }
 .post{
-	padding: 2em 0 1em 0;
-	border-bottom: 1px solid #D8D8D8;
+	border-bottom: 1px solid #2D6EC2;
+	padding-bottom: 4em;
+	margin-bottom: 3em;
+}
+.post:hover .meta{
+	opacity: 1;
 }
 .quote{
 	border-left: 3px solid #1D54B6;
@@ -106,21 +102,6 @@ i{
 .source{
 	color: #9E9191;
 	line-height: 3em;
-}
-
-.meta{
-	margin-top: 3em;
-}
-.meta li{
-	display: inline;
-	margin-right: 1em;
-	font-size: 0.8em;
-	border: 1px solid #D8D8D8;
-	padding: 0.5em 1em;
-	border-radius: 16px;
-}
-.meta li a{
-	color: #9E9191;
 }
 .tags{
 	font-size: 0.8em;
@@ -144,6 +125,8 @@ i{
 	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
     filter: gray; /* IE6-9 */
     -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+    background-size: cover;
+	width: 100%;
 }
 .photo a:hover img{
     filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
